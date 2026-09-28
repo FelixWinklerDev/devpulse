@@ -1,0 +1,17 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f5f7;
+  --text-primary: #172b4d;
+  --text-secondary: #5e6c84;
+  --accent-color: #0052cc;
+  --border-color: #dfe1e6;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1d2125;
+  --bg-secondary: #16191c;
+  --text-primary: #b6c2cf;
+  --text-secondary: #8c9bab;
+  --accent-color: #579dff;
+  --border-color: #333c43;
+}

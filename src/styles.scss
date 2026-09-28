@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+@use 'base/reset';
+@use 'base/typography';
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+}
