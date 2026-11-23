@@ -1,0 +1,39 @@
+#hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 80px;
+}
+
+#main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.summary {
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.main-link {
+  padding: 0 15px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.light_dark_mode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

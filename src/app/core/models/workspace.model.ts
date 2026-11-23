@@ -1,14 +1,14 @@
 export type Priority = 'low' | 'medium' | 'high';
-export type CardStatus = 'todo' | 'in-progress' | 'done';
+export type CardStatus = 'open' | 'invites' | 'cancellation' | 'ghosting';
 
-export interface TaskCard {
+export interface ApplicationCard {
   id: string;
-  title: string;
-  description?: string;
+  company: string;
+  city: string;
+  role: string;
   status: CardStatus;
   priority: Priority;
-  tags: string[];
-  createdAt: Date;
+  appliedAt: Date;
 }
 
 export interface Column {

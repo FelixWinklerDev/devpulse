@@ -1,44 +1,44 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { NoteDocument, TaskCard } from '../models/workspace.model';
+import { NoteDocument, ApplicationCard } from '../models/workspace.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WorkspaceState {
-  private tasksSignal = signal<TaskCard[]>([
+  private applicationsSignal = signal<ApplicationCard[]>([
     {
       id: '1',
-      title: 'SCSS Architektur einrichten',
-      description: 'Variables, Mixins und BEM-Struktur aufbauen',
-      status: 'in-progress',
-      priority: 'high',
-      tags: ['SCSS', 'Setup'],
-      createdAt: new Date(),
+      company: 'Wiemann Lehrmittel GmbH',
+      city: 'Muldestausee',
+      role: 'Frontend Developer',
+      status: 'cancellation',
+      priority: 'low',
+      appliedAt: new Date(),
     },
   ]);
 
   private notesSignal = signal<NoteDocument[]>([]);
 
   // Read-only Signals for components
-  readonly tasks = this.tasksSignal.asReadonly();
+  readonly applications = this.applicationsSignal.asReadonly();
   readonly notes = this.notesSignal.asReadonly();
 
   // Computed Values (Beispiel)
-  readonly todoTasks = computed(() => this.tasksSignal().filter((t) => t.status === 'todo'));
+  readonly application = computed(() => this.applicationsSignal().filter((t) => t.status === 'open'));
 
   // Actions
-  addTask(task: Omit<TaskCard, 'id' | 'createdAt'>) {
-    const newTask: TaskCard = {
-      ...task,
+  addApplication(applications: Omit<ApplicationCard, 'id' | 'appliedAt'>) {
+    const newApplication: ApplicationCard = {
+      ...applications,
       id: crypto.randomUUID(),
-      createdAt: new Date(),
+      appliedAt: new Date(),
     };
-    this.tasksSignal.update((tasks) => [...tasks, newTask]);
+    this.applicationsSignal.update((applications) => [...applications, newApplication]);
   }
 
-  updateTaskStatus(taskId: string, newStatus: TaskCard['status']) {
-    this.tasksSignal.update((tasks) =>
-      tasks.map((t) => (t.id === taskId ? { ...t, status: newStatus } : t)),
+  updateApplicationStatus(applicationId: string, newStatus: ApplicationCard['status']) {
+    this.applicationsSignal.update((application) =>
+      application.map((a) => (a.id === applicationId ? { ...a, status: newStatus } : a)),
     );
   }
 }
